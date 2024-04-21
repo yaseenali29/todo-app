@@ -21,7 +21,13 @@ mongoose
   .catch((err) => console.error(err));
 
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: ["https://deploy-mern-1whq.vercel.app"],
+    methods: ["GET"],
+    credentials: true,
+  })
+);
 
 app.use("/api/register/", registerRoutes);
 app.use("/api/login/", authRoutes);
